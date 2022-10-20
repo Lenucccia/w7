@@ -24,6 +24,25 @@
         disableDefaultUI: true
       }
       var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+     var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+
+      var marker = new google.maps.Marker({
+        position: {lat: 53.480759, lng: -2.242631},
+        icon: iconBase + 'flag_maps.png',
+        map: map
+      });
+
+      // Step 3. Add info window
+
+      var contentString = '<div id="content"><h2 id="firstHeading" class="firstHeading">母なる祖国像</h2><p>母なる祖国像はロシア、ヴォルゴグラードのママエフの丘にスターリングラード攻防戦を記念して建てられた巨像。剣の先端から台座の天面まで85mあり、1967年の建造時は世界一の巨像であった。 女性像だけでも52m高、剣の長さは33mに及ぶ。とても迫力がある像であり、いつか見に行きたいと思う。</p></div>';
+
+      var infowindow = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+      marker.addListener('click', function() {
+        infowindow.open(map, marker);
+      });
     }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAiV2ZbFIYuD3N4hzGLstSn2e4ZG5A7QlU&callback=initMap"
